@@ -1,0 +1,12 @@
+trigger EmailTrigger on Contact (after insert, after update) {
+    // Obtener los contactos que han sido modificados
+    List<Contact> contactsToUpdate = new List<Contact>();
+    for (Contact c : Trigger.new) {
+        if (c.Email != null && c.IdProContacto__c != null) {
+            contactsToUpdate.add(c);
+        }
+    }
+
+    // Llamar al método que actualiza el email de los contactos
+    EmailHandler.updateContactEmail(contactsToUpdate);
+}

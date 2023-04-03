@@ -1,0 +1,36 @@
+public class EmailHandler {
+    public static void updateContactEmail(List<Contact> contacts) {
+        Set<String> procontactoIds = new Set<String>();
+        for(Contact c : contacts) {
+            if(c.IdProContacto__c != null) {
+                procontactoIds.add(c.IdProContacto__c);
+            }
+        }
+        
+        if(procontactoIds.isEmpty()) {
+            return;
+        }
+        
+        String endpoint = 'https://procontacto-reclutamiento-default-rtdb.firebaseio.com/contacts.json?orderBy="$key"&equalTo="' + String.join(new List<String>(procontactoIds), '" or "') + '"';
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint(endpoint);
+        request.setMethod('GET');
+        
+        Http http = new Http();
+        HTTPResponse response = http.send(request);
+        String responseBody = response.getBody();
+        
+        if(response.getStatusCode() == 200 && responseBody != null) {
+            Map<String, Object> contactsMap = (Map<String, Object>)JSON.deserializeUntyped(responseBody);
+            for(Contact c : contacts) {
+                if(c.IdProContacto__c != null && contactsMap.containsKey(c.IdProContacto__c)) {
+                    Map<String, Object> contactData = (Map<String, Object>)contactsMap.get(c.IdProContacto__c);
+                    if(contactData.containsKey('email')) {
+                        c.Email = (String)contactData.get('email');
+                    }
+                }
+            }
+            update contacts;
+        }
+    }
+}
