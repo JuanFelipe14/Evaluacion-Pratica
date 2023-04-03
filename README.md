@@ -468,6 +468,7 @@ Estos objetos están relacionados entre sí en Trailhead. Por ejemplo, un **Lead
 Este ejercicio se encuentra dentro de los archivos del repositorio, son los archivos llamados **EmailTrigger** y **EmailHandler**. El objetivo del ejercicio 7 era desarrollar un trigger para que cuando un usuario modifique o cree un contacto de Salesforce se invoque al Web Service con el id (consultado haciendo un GET con POSTMAN en el link que dejare más abajo), y finalmente obtener los datos de email de la respuesta y actualizar el campo email del contacto.
 
 Link: https://procontacto-reclutamiento-default-rtdb.firebaseio.com/contacts.json
+ID: NRtKLnwx1KZylTxfSgO
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/20113120/229582837-044aedb4-6042-4064-9901-8cad3a900faa.png" alt="Ejemplo del Ejercicio 7" width="500">
