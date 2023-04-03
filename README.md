@@ -273,8 +273,7 @@ Estos objetos están relacionados entre sí en Trailhead. Por ejemplo, un **Lead
   <em>Ilustracion 3. Diagrama de clases de objetos en TrailHead.</em>
 </p>
 
-Puedes agregar más detalles sobre el Ejercicio 5 aquí.
-
+    
 ## Ejercicio 6
 
 <ul>
